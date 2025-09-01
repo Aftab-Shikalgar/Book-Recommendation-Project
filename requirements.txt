@@ -4,3 +4,6 @@ Cython
 pandas==2.2.1
 scikit-learn==1.4.1.post1
 streamlit
+
+# Pull scikit-surprise directly from GitHub to avoid wheel build issues
+scikit-surprise @ git+https://github.com/NicolasHug/Surprise.git
