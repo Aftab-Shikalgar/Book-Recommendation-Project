@@ -11,6 +11,7 @@ with open("matrix_and_df.pkl", "rb") as f:
 user_item_df = loaded["user_item_df"]
 books_df = loaded["books_df"]
 best_model = loaded["model"]
+list_of_users = loaded["list_of_users"]
 
 all_users = user_item_df['User-ID'].unique()
 all_books = user_item_df['ISBN'].unique()
@@ -35,7 +36,14 @@ def get_top_n_for_user(user_id, n=10):
 st.title("🎬 Recommendation System (SVD)")
 
 # User ID input
-user_id = st.number_input("Enter User ID:", min_value=1, step=1)
+
+user_id = st.selectbox(
+    "Enter User ID", 
+    options=list_of_users
+)
+
+
+#user_id = st.number_input("Enter User ID:", min_value=1, step=1)
 
 # Number of recommendations
 n = st.slider("Number of Recommendations", 1, 20, 5)
